@@ -1,0 +1,155 @@
+body{
+ background-color: yellow;
+}
+
+/*---------PROFILE SECTION---------*/
+.navbar{
+ background-color:rgb(214, 129, 68);
+}
+.profile-section{
+ background-color: chocolate;
+ text-align: center;
+ border: 1px;
+}
+.profimg{
+ border-radius: 100%;
+ width:90px;
+ height:90px;
+ margin-top:5rem;
+}
+.myname{
+font-size: 1.5rem;
+font-family: monospace;
+font-weight: 800;
+margin: 0;
+}
+.myrole{
+font-size: 0.7rem;
+font-family: sans-serif;
+padding-top: 0rem;
+padding-bottom: 5rem;
+margin: 0;
+}
+/*---------SKILLS SECTION---------*/
+
+.flexbox-container{
+ display: flex;
+  background-color: tomato;
+ width:100%;
+ height: auto;
+ padding: 0.5rem;
+ align-items:center;
+ flex-wrap: wrap;/*wraps when screen size changed*/
+ color: yellow;
+}
+.flexbox-item{
+ width:200px;
+ height:250px;
+ background-color: blue;
+ margin: 0.5rem;
+ text-align: center;
+ 
+}
+@media(max-width:640px){
+.flexbox-container{
+ display: flex;
+ justify-content: center;
+}
+.flexbox-item{
+ flex:50%/*width:100%;
+ mar : 0.5 rem;*/
+}
+}
+/*---------PROJECTS SECTION---------*/
+
+.flexbox-container1{
+background-color: blueviolet;
+width: 100%;
+height: auto;
+justify-content: center;
+}
+
+
+.flexbox-items1 , .project-one-img{
+/*background-color: cadetblue;*/
+ width: 200px;
+ height: 300px;
+ margin: 0.5rem;
+}
+.project-1, .project-2, .project-3 , .project-4{
+ padding: 5rem;
+ padding-left: 20rem;
+ display: flex;
+ 
+}
+.item01{
+ margin-right: 4rem;
+}
+.item02{
+ width:520px;
+ height: fit-content;
+ padding-top: 1rem;
+}
+.project-2 , .project-3 , .project-4{
+ padding-top: 1rem;
+}
+
+@media(max-width:440px){
+.flexbox-container{
+ display: flex;
+  vertical-align: middle;
+}
+item02{
+  clear: both;
+}
+item002{
+  clear: both;
+}
+}
+
+
+/*tools section*/
+.flexbox-container2{
+ width: 100%;
+ background-color: orangered;
+ display: flex;
+ height: auto;
+ justify-content: center;
+ 
+ 
+}
+.flexbox-items2{
+ width: 70px;
+ height: 70px;
+ background-color: palevioletred;
+margin: 2.5rem;
+margin-left: 0.25rem;
+}
+/*technology section*/
+.flexbox-container4{
+  display:flex;
+  margin: 0;
+  height: auto;
+
+}
+.flexbox-item4{
+  width: 25%;
+  height: 300px;
+  border: solid 0.1px black;
+  background-color: darkgrey;
+}
+/*contact and login section*/
+.flexbox-container5{
+  display: flex;
+  margin: 0;
+}
+.flexbox-item5{
+  width:30%;
+  height: 500px;
+  background: rgb(189, 105, 105);
+}
+.flexbox-item6{
+  width:70%;
+  height: 500px;
+  background-color:orange;
+}
