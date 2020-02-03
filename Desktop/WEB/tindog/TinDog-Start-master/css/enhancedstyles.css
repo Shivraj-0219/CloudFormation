@@ -1,0 +1,165 @@
+
+body{
+ text-align: center;/*7 times*/
+}
+/*maintain same padding all through sectionofpage*/
+
+h1 ,h2 ,h3 {
+ font-family: "Montserrat", sans-serif;
+}
+/*h3*/
+
+p {
+  color: grey;
+}
+/*headings*/
+.big-heading{
+ font-family: "Montserrat", sans-serif;
+  font-size: 3.5rem;
+  line-height: 1.5;
+  font-weight: 900;
+}
+
+/*.ctaheading{
+  font-family: "Montserrat", sans-serif;
+  font-size: 3.5rem;
+  line-height: 1.5;
+}*/
+
+.price-heading{/*section-heading*/
+ font-size: 3rem;
+ line-height: 1.5;
+}
+/*containers*/
+.container-fluid {
+  padding:  7% 15%; 
+}
+
+/*sections*/
+.colored-section{
+background-color: #ff4c68;
+color: white;
+}
+.white-section{
+ background-color: white;
+}
+
+/*navigation bar*/
+.navbar {
+  padding: 2rem 0rem 4.5rem;
+}
+.navbar-brand {
+  font-family: "Ubuntu";
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+.nav-item {
+  padding: 0 18px;
+}
+.nav-link {
+  font-size: 1.5rem;
+  font-weight: "Monstserrat-light";
+}
+
+/*download-buttons*/
+.download-button {
+  margin: 5% 3% 5% 0; /*TRLB*/
+}
+
+/*TITLE section*/
+
+/*#title{text-align: left;}
+1.four no of padding:7% 15%; reduced by inducing custom names container-fluid
+2.above code is reduced by combining id selector and class selector*/
+
+#title .container-fluid {
+  padding:  2% 15% 7%; 
+  text-align: left;
+}
+/*only applied to particular id with container-fluid class since container-fluid is bootstrap class we cant add custom class to it or else it loses its functionality*/
+.title-image {
+  width: 50%;
+  transform: rotate(25deg);
+  /*margin-top: 20% 20%;*/
+  position: absolute;
+  right: 30%;
+}
+
+/*features section*/
+#features {
+  background-color: white;
+  position: relative; /*reason for using relative position*/
+  z-index: 1; /*optional according to stack order table*/
+}
+.feature-box {
+  text-align: center;
+  padding: 4.5%;
+}
+.feature-title{
+  font-size: 1.5rem;
+}
+
+/*icon section*/
+.icon {
+  color: #ff4c68;
+  margin-bottom: 1rem;
+}
+.icon:hover {
+  color: red;
+}
+
+/*testimonials*/
+#testimonials{
+ background-color: #ef8172;/*different color*/
+}
+.testimonial-image {
+  width: 10%;
+  border-radius: 100%;
+  margin: 20px;
+}
+.testimonial-text{
+ font-size: 3rem;
+  line-height: 1.5;
+}
+
+/*press section*/
+#press {
+  background-color: #ef8172;
+  text-align: center;
+  padding-bottom: 3%;
+}
+.presslogo {
+  width: 15%;
+  margin: 20px 20px 50px; /*trlb*/
+}
+
+/*pricing session*/
+#pricing {
+  padding: 100px;
+  text-align: center;
+}
+.pricing-column {
+  padding: 2% 3%;
+}
+.price-text{
+ font-size: 3rem;
+  line-height: 1.5;
+}
+
+/*footer*/
+.social-icon {
+  margin: 20px 10px;
+}
+
+/*media queries*/
+@media(max-width:990px){
+   .title-image{
+     position: static;
+     transform: rotate(0);
+     margin-top: 3rem;
+   }
+   #title{
+     text-align: center;
+   }
+}
+/*NOTE:max-width impies 1100px and less than 1100 apply following properties*/
