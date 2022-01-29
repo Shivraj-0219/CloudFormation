@@ -1,0 +1,126 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Myntra Infrastructure with public and private resources
+Resources:
+  myntravpc:
+    Type: "AWS::EC2::VPC"
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: "true"
+      EnableDnsHostnames: "true"
+      Tags:
+        - Key: Name
+          Value: Myntra-vpc
+
+  myntrapubsn:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: myntravpc
+      CidrBlock: 10.0.2.0/24
+      AvailabilityZone: "us-west-1b"
+      MapPublicIpOnLaunch: "true"
+      Tags:
+        - Key: Name
+          Value: Myntra-pub-sn
+
+  myntrapvtsn:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId:
+        Ref: myntravpc
+      CidrBlock: 10.0.3.0/24
+      AvailabilityZone: "us-west-1b"
+      MapPublicIpOnLaunch: "false"
+      Tags:
+        - Key: Name
+          Value: Myntra-pvt-sn
+
+  myntraigw:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: myntra-igw
+
+  myntraigwattach:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId:
+        Ref: myntravpc
+      InternetGatewayId:
+        Ref: myntraigw
+
+  myntrapubrt:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:
+        Ref: myntravpc
+      Tags:
+        - Key: Name
+          Value: myntra-pub-rt
+
+  myntrapvtrt:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId:
+        Ref: myntravpc
+      Tags:
+        - Key: Name
+          Value: myntra-pvt-rt
+
+  myntraigwroute:
+    Type: AWS::EC2::Route
+    DependsOn: myntraigwattach
+    Properties:
+      RouteTableId:
+        Ref: myntrapubrt
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId:
+        Ref: myntraigw
+
+  myntrapubsnasc:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        Ref: myntrapubsn
+      RouteTableId:
+        Ref: myntrapubrt
+
+  myntrapvtsnasc:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId:
+        Ref: myntrapvtsn
+      RouteTableId:
+        Ref: myntrapvtrt
+
+  myntrasshsg:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow SSh
+      VpcId:
+        Ref: myntravpc
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+      SecurityGroupEgress:
+        - IpProtocol: tcp
+          FromPort: 0
+          ToPort: 65535
+          CidrIp: 0.0.0.0/0
+
+  MyEC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: "ami-01163e76c844a2129"
+      InstanceType: "t2.micro"
+      SubnetId:
+        Ref: myntrapubsn
+      SecurityGroupIds:
+        - !GetAtt "myntrasshsg.GroupId"
+      KeyName: "Centos-East2"
+      Tags:
+        - Key: Name
+          Value: Myntra-web
